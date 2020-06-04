@@ -49,27 +49,24 @@ describe('LeaderBoard', () => {
     });
 
     it ('should Navigate to Correct Route on button click', async () => {
-    	const {container} = render(<App/>);
+    	const {container} = render(<App />);
+    	let allBtn = container.querySelectorAll('button');
+			fireEvent.click(allBtn[RANK_BUTTON_INDEX]);
+			// Page goes to a new url after above click, now I have to 
+			// check this new URL if that if '/rank' or not but it is returning '/'
+			expect(window.location.pathname).toEqual('/rank');
 
-    	async function checkNavigation(buttonIndex, urlPath) {
-    		let allBtn = container.querySelectorAll('button');
-				fireEvent.click(allBtn[buttonIndex]);
+			// allBtn = container.querySelectorAll('button');			
+ 			// 	fireEvent.click(allBtn[POINTS_BUTTON_INDEX]);
+			// expect(window.location.pathname).toEqual('/points');
 
-				await new Promise((res) => {
-					setTimeout(() => {
-						res();
-						expect(window.location.pathname).toEqual('false');
-					});
-				});
-    	}
-    	console.log('1');
-    	checkNavigation(RANK_BUTTON_INDEX, '/rank');
-    	console.log('2');
-    	checkNavigation(POINTS_BUTTON_INDEX, '/points');
-    	console.log('3');
-    	checkNavigation(NAME_BUTTON_INDEX, '/name');
-    	console.log('4');
-    	checkNavigation(AGE_BUTTON_INDEX, '/age');
+			// allBtn = container.querySelectorAll('button');			
+ 			// 	fireEvent.click(allBtn[NAME_BUTTON_INDEX]);
+			// expect(window.location.pathname).toEqual('/name');
+
+			// allBtn = container.querySelectorAll('button');			
+ 			// 	fireEvent.click(allBtn[AGE_BUTTON_INDEX]);
+			// expect(window.location.pathname).toEqual('/age');
     });
 
    //  it ('should Highlight Correct button on button click', () => {
@@ -104,40 +101,32 @@ describe('LeaderBoard', () => {
  		// 	expect(allBtn[AGE_BUTTON_INDEX].className).toEqual('');
    //  });
 
-    it ('should Sort by Rank', () => {
-			const {container} = render(<App/>);
-    	const allBtns = container.querySelectorAll('button');
-			fireEvent.click(allBtns[RANK_BUTTON_INDEX]);
-			setTimeout(() => {
-				validateSortByRank(container, SORT_BY_RANK);
-			});
-    });
+   //  it ('should Sort by Rank', () => {
+			// const {container} = render(<App/>);
+   //  	const allBtns = container.querySelectorAll('button');
+			// fireEvent.click(allBtns[RANK_BUTTON_INDEX]);
+			// validateSortByRank(container, SORT_BY_RANK);
+   //  });
 
-    it ('should Sort by Points', () => {
-			const {container} = render(<App/>);
-    	const allBtns = container.querySelectorAll('button');
-			fireEvent.click(allBtns[POINTS_BUTTON_INDEX]);
-			setTimeout(() => {
-				validateSortByRank(container, SORT_BY_POINTS);
-			});
-    });
+   //  it ('should Sort by Points', () => {
+			// const {container} = render(<App/>);
+   //  	const allBtns = container.querySelectorAll('button');
+			// fireEvent.click(allBtns[POINTS_BUTTON_INDEX]);
+			// validateSortByRank(container, SORT_BY_POINTS);
+   //  });
 
-    it ('should Sort by Name', () => {
-			const {container} = render(<App/>);
-    	const allBtns = container.querySelectorAll('button');
-			fireEvent.click(allBtns[NAME_BUTTON_INDEX]);
-			setTimeout(() => {
-				validateSortByRank(container, SORT_BY_NAME);
-			});
-    });
+   //  it ('should Sort by Name', () => {
+			// const {container} = render(<App/>);
+   //  	const allBtns = container.querySelectorAll('button');
+			// fireEvent.click(allBtns[NAME_BUTTON_INDEX]);
+			// validateSortByRank(container, SORT_BY_NAME);
+   //  });
 
-    it ('should Sort by Age', () => {
-			const {container} = render(<App/>);
-    	const allBtns = container.querySelectorAll('button');
-			fireEvent.click(allBtns[AGE_BUTTON_INDEX]);
-			setTimeout(() => {
-				validateSortByRank(container, SORT_BY_AGE);
-			});
-    });
+   //  it ('should Sort by Age', () => {
+			// const {container} = render(<App/>);
+   //  	const allBtns = container.querySelectorAll('button');
+			// fireEvent.click(allBtns[AGE_BUTTON_INDEX]);
+			// validateSortByRank(container, SORT_BY_AGE);
+   //  });
 });
 
